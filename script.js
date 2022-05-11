@@ -41,7 +41,9 @@ const getInitialCards = async function (card, pag) {
           <div class="card__bottom-info">
             <p><span>Supertype:</span> ${el.supertype}</p>
             <p><span>Subtype:</span> ${el.subtypes[0]}</p>
-            <p><span>Rarity:</span> ${el.rarity}</p>
+            <p class="${el.rarity ? "" : "hidden"}"><span>Rarity:</span> ${
+        el.rarity
+      }</p>
           </div>
         </div>
       `;
@@ -65,17 +67,18 @@ loadMore.addEventListener("click", function () {
 // Search input
 searchInput.addEventListener("keyup", function (e) {
   const searchValue = e.target.value.toLowerCase();
-  Array.from(loadedCards).forEach((el) => el.classList.add("hidden"));
-  info.classList.add("hidden");
+
+  // Array.from(loadedCards).forEach((el) => el.classList.add("hidden"));
 
   Array.from(loadedCards).filter((el) => {
     const name = el.dataset.name.toLowerCase();
+
     name.includes(searchValue)
       ? el.classList.remove("hidden")
       : el.classList.add("hidden");
-
-    Array.from(loadedCards).every((el) => el.classList.contains("hidden"))
-      ? info.classList.remove("hidden")
-      : info.classList.add("hidden");
   });
+
+  Array.from(loadedCards).every((el) => el.classList.contains("hidden"))
+    ? info.classList.remove("hidden")
+    : info.classList.add("hidden");
 });
