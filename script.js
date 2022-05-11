@@ -27,7 +27,7 @@ const getInitialCards = async function (card, pag) {
             <img
               class="image"
               src="${el.images.small}"
-              alt="pokemon photo"
+              alt="${el.name}"
             />
           </div>
           <div class="card__bottom-info">
