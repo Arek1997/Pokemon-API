@@ -9,15 +9,19 @@ const loadedCards = document.getElementsByClassName("card");
 let page = 1;
 const cardsCount = 4;
 
+const showHide = function (...elements) {
+  console.log(elements);
+  elements.forEach((element) => element.classList.toggle("hidden"));
+};
+
 const getInitialCards = async function (card, pag) {
-  dotDiv.classList.remove("hidden");
-  loadMore.classList.add("hidden");
+  showHide(dotDiv, loadMore);
 
   const res = await fetch(
     `https://api.pokemontcg.io/v2/cards?page=${pag}&pageSize=${card}`
   );
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
 
   data.data.forEach((el) => {
     const html = `
@@ -42,10 +46,9 @@ const getInitialCards = async function (card, pag) {
       `;
 
     catalog.insertAdjacentHTML("beforeend", html);
-
-    dotDiv.classList.add("hidden");
-    loadMore.classList.remove("hidden");
   });
+
+  showHide(dotDiv, loadMore);
 };
 getInitialCards(cardsCount, page);
 
