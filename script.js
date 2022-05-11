@@ -2,7 +2,7 @@ const catalog = document.querySelector(".catalog");
 const info = document.querySelector(".catalog__info");
 const buttonDiv = document.querySelector(".button");
 const loadMore = document.querySelector(".btn");
-const dots = document.querySelectorAll(".loadingDots");
+const dotDiv = document.querySelector(".loadingDots");
 const searchInput = document.querySelector(".search");
 const loadedCards = document.getElementsByClassName("card");
 
@@ -10,6 +10,9 @@ let page = 1;
 const cardsCount = 4;
 
 const getInitialCards = async function (card, pag) {
+  dotDiv.classList.remove("hidden");
+  loadMore.classList.add("hidden");
+
   const res = await fetch(
     `https://api.pokemontcg.io/v2/cards?page=${pag}&pageSize=${card}`
   );
@@ -38,16 +41,16 @@ const getInitialCards = async function (card, pag) {
         </div>
       `;
 
-    dots.forEach((dot) => dot.classList.add("hidden"));
-    buttonDiv.classList.remove("hidden");
     catalog.insertAdjacentHTML("beforeend", html);
+
+    dotDiv.classList.add("hidden");
+    loadMore.classList.remove("hidden");
   });
 };
 getInitialCards(cardsCount, page);
 
 // Load more button
 loadMore.addEventListener("click", function () {
-  buttonDiv.classList.add("hidden");
   page++;
   getInitialCards(cardsCount, page);
 });
