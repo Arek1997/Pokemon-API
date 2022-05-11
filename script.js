@@ -15,16 +15,17 @@ const showHide = function (...elements) {
 };
 
 const getInitialCards = async function (card, pag) {
-  showHide(dotDiv, loadMore);
+  try {
+    showHide(dotDiv, loadMore);
 
-  const res = await fetch(
-    `https://api.pokemontcg.io/v2/cards?page=${pag}&pageSize=${card}`
-  );
-  const data = await res.json();
-  // console.log(data);
+    const res = await fetch(
+      `https://api.pokemontcg.io/v2/cards?page=${pag}&pageSize=${card}`
+    );
+    const data = await res.json();
+    // console.log(data);
 
-  data.data.forEach((el) => {
-    const html = `
+    data.data.forEach((el) => {
+      const html = `
       <div class="card" data-name="${el.name}">
           <div class="card__top-info">
             <h2>${el.name}</h2>
@@ -45,10 +46,13 @@ const getInitialCards = async function (card, pag) {
         </div>
       `;
 
-    catalog.insertAdjacentHTML("beforeend", html);
-  });
+      catalog.insertAdjacentHTML("beforeend", html);
+    });
 
-  showHide(dotDiv, loadMore);
+    showHide(dotDiv, loadMore);
+  } catch (err) {
+    console.log(err);
+  }
 };
 getInitialCards(cardsCount, page);
 
