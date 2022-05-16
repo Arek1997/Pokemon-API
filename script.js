@@ -9,6 +9,7 @@ const loadedCards = document.getElementsByClassName("card");
 let page = 1;
 const cardsCount = 4;
 
+// Show / hide loading dots and button
 const showHide = function (...elements) {
   console.log(elements);
   elements.forEach((element) => element.classList.toggle("hidden"));
@@ -62,6 +63,8 @@ getInitialCards(cardsCount, page);
 loadMore.addEventListener("click", function () {
   page++;
   getInitialCards(cardsCount, page);
+  searchInput.value = "";
+  info.classList.add("hidden");
 });
 
 // Search input
@@ -81,4 +84,11 @@ searchInput.addEventListener("keyup", function (e) {
   Array.from(loadedCards).every((el) => el.classList.contains("hidden"))
     ? info.classList.remove("hidden")
     : info.classList.add("hidden");
+
+  // Hidden Load More button
+  Array.from(loadedCards).some((el) => el.classList.contains("hidden"))
+    ? buttonDiv.classList.add("hidden")
+    : buttonDiv.classList.remove("hidden");
+
+  if (!info.classList.contains("hidden")) buttonDiv.classList.remove("hidden");
 });

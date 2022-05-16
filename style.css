@@ -43,7 +43,7 @@ body {
 }
 
 .search:focus {
-  border-color: hsl(60, 100%, 40%);
+  border-color: hsl(39 100% 50%);
 }
 
 .catalog {
