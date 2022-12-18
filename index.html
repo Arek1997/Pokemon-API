@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokemon API</title>
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
-  </head>
-  <body>
-    <div class="wrapper">
-      <!-- Top bar -->
-      <div class="title-search">
-        <h1 class="title">
-          <span class="title-1">Pokemon</span>
-          <span class="title-2">catalog</span>
-        </h1>
-        <input class="search" type="text" placeholder="Search by name" />
-      </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pokemon API</title>
+		<link rel="stylesheet" href="./src/style/style.css" />
+		<script defer src="./dist/script.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<!-- Top bar -->
+			<div class="title-search">
+				<h1 class="title">
+					<span class="title-1">Pokemon</span>
+					<span class="title-2">catalog</span>
+				</h1>
+				<input class="search" type="text" placeholder="Search by name" />
+			</div>
 
-      <!-- Content -->
-      <div class="catalog">
-        <div class="catalog__info hidden">
-          <p>There is no results!</p>
-        </div>
-        <!-- <div class="loadingDots">
+			<!-- Content -->
+			<div class="catalog">
+				<div class="catalog__info hidden">
+					<p>There is no results!</p>
+				</div>
+				<!-- <div class="loadingDots">
           <span class="dot-1"></span>
           <span class="dot-2"></span>
           <span class="dot-3"></span>
         </div> -->
 
-        <!-- <div class="card">
-          <div class="card__top-info">
+				<!-- <div class="card">
+          <article class="card__top-info">
             <h2>Nazwa</h2>
             <span>Nr: 10</span>
           </div>
@@ -47,19 +47,19 @@
             <p><span>Subtype:</span> Stage 1</p>
             <p><span>Rarity:</span> Uncommon</p>
           </div>
-        </div> -->
-      </div>
+        </article> -->
+			</div>
 
-      <!-- Button -->
-      <div class="button">
-        <button class="btn">Load More</button>
+			<!-- Button -->
+			<div class="button">
+				<button class="btn">Load More</button>
 
-        <div class="loadingDots hidden">
-          <span class="dot-1"></span>
-          <span class="dot-2"></span>
-          <span class="dot-3"></span>
-        </div>
-      </div>
-    </div>
-  </body>
+				<div class="loadingDots hidden">
+					<span class="dot-1"></span>
+					<span class="dot-2"></span>
+					<span class="dot-3"></span>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
